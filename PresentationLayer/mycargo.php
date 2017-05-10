@@ -1,3 +1,22 @@
+
+<?php
+
+require_once("../LogicLayer/DatabaseManager.php");	
+require_once("../LogicLayer/Cargo.php");
+
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+	$id=$_POST['idofcargo'];	
+	$result1 = UserManager::mycargo($id);
+}
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -36,37 +55,123 @@
 <!-- Modal -->
 
   <hr>
-  
-  
-  <div class="w3-row">
-  <div class="w3-third">
- *
-  </div>
-    <div class="w3-third">
-		<form action="mycargo.php" method="POST">
-		<label>Cargo Serial Key</label>
-		<input class="w3-input" type="text" name="idofcargo" required>
-		  <br> <br>
-			<div class="w3-center">
-				<button class="w3-btn w3-xlarge w3-black w3-hover-light-grey" onclick="addCargo()" style="font-weight:900;">Where is my cargo?</button>
-			</div>
-		</form>
 
+  <!-- Sender -->
+<div class="w3-container">
+  <div class="w3-center">
+    <h2>Sender</h2>
+    <p w3-class="w3-large">Info</p>
   </div>
-    <div class="w3-third">
-  *
-  </div>
-  </div>
-  <br> <br>
 
+<div class="w3-responsive w3-card-4">
+<table class="w3-table w3-striped w3-bordered">
+<thead>
+<tr class="w3-theme">
+  <th>Name</th>
+  <th>Surname</th>
+  <th>Country</th>
+  <th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><?php echo $result1->getsenderName();?></td>
+  <td><?php echo $result1->getsenderSurname();?></td>
+  <td><?php echo $result1->getsenderCountry();?></td>  
+  <td><?php echo $result1->getsenderCity();?></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- Receiver -->
+<div class="w3-container">
+  <div class="w3-center">
+    <h2>Receiver</h2>
+    <p w3-class="w3-large">Info</p>
+  </div>
   
+  
+<div class="w3-responsive w3-card-4">
+<table class="w3-table w3-striped w3-bordered">
+<thead>
+<tr class="w3-theme">
+  <th>Name</th>
+  <th>Surname</th>
+  <th>Country</th>
+  <th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><?php echo $result1->getreceiverName();?></td>
+  <td><?php echo $result1->getreceiverSurname();?></td>
+  <td><?php echo $result1->getreceiverCountry();?></td>  
+  <td><?php echo $result1->getreceiverCity();?></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+  
+  
+
+
+</div>
+<!-- Cargo -->
+<div class="w3-container">
+  <div class="w3-center">
+    <h2>Cargo</h2>
+    <p w3-class="w3-large">Info</p>
+  </div>
+  
+  
+<div class="w3-responsive w3-card-4">
+<table class="w3-table w3-striped w3-bordered">
+<thead>
+<tr class="w3-theme">
+  <th>Weight</th>
+  <th>Volume</th>
+
+
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><?php echo $result1->getcweight();?></td>
+  <td><?php echo $result1->getcvolume();?></td>
+</tr>
+
+</tbody>
+</table>
+</div>
   
   
   <br><br>
-    <hr>
 
+</div>
+
+
+<div class="w3-container"> 
+<div class="w3-center">
+<button class="w3-btn w3-xlarge w3-red w3-hover-light-grey" onclick="addCargo()" style="font-weight:900;">Delete</button>
+</div>
+</div>
+
+<br><br>
+
+<div class="w3-container"> 
+<div class="w3-center">
+<button class="w3-btn w3-xlarge w3-black w3-hover-light-grey" onclick="addCargo()" style="font-weight:900;">Update</button>
+</div>
+</div>
+
+<br><br>
 
 <!-- Footer -->
+
 <footer class="w3-container w3-theme-dark w3-padding-16">
   <h3>Footer</h3>
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
@@ -79,10 +184,9 @@
 </footer>
 
 <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+
 <script>
 // Side navigation
-
-
 
 
 

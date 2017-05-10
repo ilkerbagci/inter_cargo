@@ -75,65 +75,6 @@
 <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
 <script>
 // Side navigation
-    $(document).ready(function()
-	{ // start here, if DOM is loaded
-		$.get("../api/webapi.php", function(data){
-				//alert("Data Loaded: " + data);
-		var obj = JSON.parse(data);
-		
-		var x = document.getElementById("countryselectionsender");
-		var x2 = document.getElementById("countryselectionreciver");
-		for (i = 0; i < obj.length; i++)
-		{
-		var option = document.createElement("option");
-		var option2 = document.createElement("option");
-		option.text = obj[i].name;
-		option2.text = obj[i].name;
-		x.add(option);
-		x2.add(option2);
-		}}
-		);
-	});
-
-	
-function getCity(country,section)
-{
-var str1 = "str=";
-var temp = str1.concat(country);
-
- $.post("../api/webapi.php",temp, function(data){
-            //alert("Data Loaded: " + data);
-	
-	var obj = JSON.parse(data);
-	var x = document.getElementById(section);
-	removeOptions(x);
-	for (i = 0; i < obj.length; i++){
-	var option = document.createElement("option");
-	option.text = obj[i].name;
-	x.add(option);
-	}
-	
-    });
-}
-
-function addCargo()
-{
- var nameR = document.getElementById("receivername").value;
- var nameS = document.getElementById("sendername").value;
- var surnameR = document.getElementById("receiversurname").value;
- var surnameS = document.getElementById("sendersurname").value;
- var countryR = document.getElementById("countryselectionreciver").value;
- var countryS = document.getElementById("countryselectionsender").value;
- var cityR = document.getElementById("cityselectionreciver").value;
- var cityS = document.getElementById("cityselectionsender").value;
- var weight = document.getElementById("weight").value;
- var volume = document.getElementById("volume").value;
- 
-var cargo = {rname:nameR,sname:nameS,rsurname:surnameR,ssurname:surnameS,rcountry:countryR,scountry:countryS,rcity:cityR,scity:cityS,cweight:weight,cvolume:volume};
- $.post("../LogicLayer/Manager.php",cargo,function(data){
-		alert(cargo.cweight);
-    });
-}
 
 
 

@@ -83,7 +83,24 @@
 				
 			}
 			
-		
+			
+			
+			public static function mycargo ($id) 
+			{
+				$db = new DB();
+				$result = $db->getDataTable("select * from cargo where id=".$id.";");
+				$row =$result->fetch_assoc();
+				$resultr = $db->getDataTable("SELECT * FROM `persontc` WHERE id=".$row["toid"]."");
+				$rowr =$resultr->fetch_assoc();
+				$results = $db->getDataTable("SELECT * FROM `persontc` WHERE id=".$row["fromid"]."");
+				$rows =$results->fetch_assoc();
+				
+				$cargoObj = new Cargo($rowr["name"],$rows["name"],$rowr["surname"],$rows["surname"],"","","","",$row["weight"],$row["volume"]); 
+				return $cargoObj;
+			}
+			
+			
+	
 		}
 
 			

@@ -246,7 +246,7 @@ function addCargo()
  var weight = document.getElementById("weight").value;
  var volume = document.getElementById("volume").value;
  
-var cargo = {rname:nameR,sname:nameS,rsurname:surnameR,ssurname:surnameS,rcountry:countryR,scountry:countryS,rcity:cityR,scity:cityS,cweight:weight,cvolume:volume};
+var cargo = {type:'1',rname:nameR,sname:nameS,rsurname:surnameR,ssurname:surnameS,rcountry:countryR,scountry:countryS,rcity:cityR,scity:cityS,cweight:weight,cvolume:volume};
  $.post("../LogicLayer/Manager.php",cargo,function(data){
 		alert(cargo.cweight);
     });
